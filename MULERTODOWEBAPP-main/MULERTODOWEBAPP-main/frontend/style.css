@@ -1,0 +1,251 @@
+/* Define our Neon Colors */
+:root {
+    --bg-dark: #0a0a0f;
+    --card-dark: #14141f;
+    --text-main: #e0e0e0;
+    --neon-purple: #bc13fe;
+    --neon-purple-glow: rgba(188, 19, 254, 0.4);
+    --neon-green: #0cf574;
+    --neon-green-glow: rgba(12, 245, 116, 0.4);
+    --neon-pink: #ff2a6d; 
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+body { 
+    background-color: var(--bg-dark); 
+    color: var(--text-main); 
+    padding: 2rem; 
+}
+
+.container { 
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+
+/* Glowing Header */
+h1 { 
+    text-align: center; 
+    margin-bottom: 2rem; 
+    color: #fff; 
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--neon-purple), 0 0 40px var(--neon-purple);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Form Card */
+.card { 
+    background: var(--card-dark); 
+    padding: 1.5rem; 
+    border-radius: 10px; 
+    border: 1px solid #2a2a3d;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5); 
+    margin-bottom: 2rem; 
+}
+
+/* Text Input */
+input[type="text"] { 
+    width: 100%; 
+    padding: 12px; 
+    margin-bottom: 15px; 
+    background-color: #050508;
+    color: #fff;
+    border: 1px solid #333; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 10px var(--neon-purple-glow);
+}
+
+/* =========================================
+   THE FIX: Beautiful Custom File Button 
+   ========================================= */
+.file-upload { 
+    margin-bottom: 20px; 
+    color: var(--neon-green); 
+    font-weight: bold;
+}
+
+.file-upload input[type="file"] {
+    display: block;
+    margin-top: 10px;
+    color: #888; /* Color for the "No file chosen" text */
+    font-size: 14px;
+}
+
+/* This targets the ugly default button itself */
+input[type="file"]::file-selector-button {
+    background: transparent;
+    color: var(--neon-green);
+    border: 1px solid var(--neon-green);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    box-shadow: 0 0 8px var(--neon-green-glow) inset;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: var(--neon-green);
+    color: #000;
+    box-shadow: 0 0 15px var(--neon-green-glow);
+}
+
+
+/* Main Add Task Button */
+button[type="submit"] { 
+    background: transparent; 
+    color: var(--neon-purple); 
+    border: 2px solid var(--neon-purple); 
+    padding: 12px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    width: 100%; 
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px var(--neon-purple-glow) inset, 0 0 10px var(--neon-purple-glow);
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover { 
+    background: var(--neon-purple); 
+    color: #fff; 
+    box-shadow: 0 0 20px var(--neon-purple-glow) inset, 0 0 20px var(--neon-purple-glow);
+}
+
+/* Task Grid & Items */
+.task-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 1.5rem; 
+}
+
+.task-item { 
+    background: var(--card-dark); 
+    border-radius: 10px; 
+    overflow: hidden; 
+    border: 1px solid #2a2a3d;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); 
+    display: flex; 
+    flex-direction: column; 
+    transition: all 0.3s ease; 
+}
+
+.task-item:hover { 
+    transform: translateY(-5px); 
+    border-color: var(--neon-green);
+    box-shadow: 0 0 15px var(--neon-green-glow);
+}
+
+.task-item.completed { 
+    opacity: 0.4; 
+    filter: grayscale(100%);
+}
+
+.task-item.completed h3 { 
+    text-decoration: line-through; 
+    color: #777;
+}
+
+.task-img { 
+    width: 100%; 
+    height: 180px; 
+    object-fit: cover; 
+    background: #050508; 
+    border-bottom: 1px solid #2a2a3d;
+}
+
+.task-content { 
+    padding: 15px; 
+    flex-grow: 1; 
+}
+
+.task-actions { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 10px 15px; 
+    background: #0d0d14; 
+    border-top: 1px solid #2a2a3d; 
+    gap: 10px;
+}
+
+/* Action Buttons */
+button { border: none; font-family: inherit; }
+
+.btn-toggle, .btn-delete {
+    width: 48%;
+    font-size: 14px;
+    padding: 8px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.btn-toggle { 
+    border: 1px solid var(--neon-green); 
+    color: var(--neon-green); 
+    box-shadow: 0 0 8px var(--neon-green-glow) inset;
+}
+
+.btn-toggle:hover { background: var(--neon-green); color: #000; }
+
+.btn-delete { 
+    border: 1px solid var(--neon-pink); 
+    color: var(--neon-pink); 
+    box-shadow: 0 0 8px rgba(255, 42, 109, 0.4) inset;
+}
+
+.btn-delete:hover { background: var(--neon-pink); color: #fff; }
+
+
+/* =========================================
+   MOBILE RESPONSIVENESS (Phones & Tablets)
+   ========================================= */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem; /* Less padding on small screens */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Smaller title */
+        margin-bottom: 1.5rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .task-grid {
+        /* Forces the grid into a single vertical column on tiny screens */
+        grid-template-columns: 1fr; 
+    }
+
+    .task-actions {
+        /* Stacks the Toggle and Delete buttons on top of each other */
+        flex-direction: column;
+    }
+
+    .btn-toggle, .btn-delete {
+        width: 100%; /* Makes buttons full width */
+        padding: 12px; /* Makes them easier to tap with a finger */
+    }
+}
